@@ -3,16 +3,28 @@ from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
-
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    users = [
+        {
+            'first_name': 'Demo',
+            'last_name': 'User',
+            'email': 'demo@magicbnb.io',
+            'username': 'demo',
+            'password': 'alohamora',
+            'house_allegiance': 1,
+            'is_admin': False,
+            'profile_image': 'https://i.imgur.com/XyqQZ9x.jpg',
+            'created_at': new Date(),
+            'updated_at': new Date()
+        },
+        {
+            'first_name': 'John',
+            'last_name': 'Doe',
+            'email': 
+        }
+    ]
+    for user in users:
+        user = User(**user)
+        db.session.add(user)
 
     db.session.commit()
 

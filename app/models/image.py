@@ -7,8 +7,10 @@ class Image(db.Model):
   url = db.Column(db.String(255), nullable=False)
   spot_id = db.Column(db.Integer, db.ForeignKey('spots.id'), nullable=False)
 
-  
 
+  spot = db.relationship('Spot', backref=db.backref('images', lazy=True))
+
+  
   def to_dict(self):
     return {
       'id': self.id,

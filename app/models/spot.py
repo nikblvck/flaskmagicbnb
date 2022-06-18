@@ -14,7 +14,7 @@ class Spot(db.Model):
   longitude = db.Column(db.Float, nullable=False)
   latitude = db.Column(db.Float, nullable=False)
   price = db.Column(db.Integer, nullable=False)
-  owner_id = db.Column(db.Intger, db.ForeignKey('users.id'), nullable=False)
+  owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   house_style = db.Column(db.Integer, db.ForeignKey('houses.id'), nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=db.func.now())
   updated_at = db.Column(db.DateTime, nullable=False, default=db.func.now(), onupdate=db.func.now())
@@ -42,5 +42,5 @@ class Spot(db.Model):
       'updated_at': self.updated_at,
       'images': [image.to_dict() for image in self.images],
       'reviews': [review.to_dict() for review in self.reviews],
-      'has_amenities': 
+      'has_amenities': [amenity.to_dict() for amenity in self.has_amenities],
     }
